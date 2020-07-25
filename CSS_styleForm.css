@@ -1,0 +1,81 @@
+form,input,select,button{margin:0;padding:0;}
+
+form{display:block;}
+
+/* Labels */
+
+label{display:block;font-size:.8em;color:#999999;} /* For form fields */
+	
+input { 
+	padding:1em;
+	color:#999999;
+	background-color:#FFFFFF;
+	border:.1em solid #999999;
+	cursor:pointer; }
+
+input[type=text]{width:76%;}
+input[type=password]{width:76%;}
+
+input[type=checkbox]+div{display:none;} 
+	
+input[type=checkbox]:checked+div {
+	display:block;
+	width:100%; 
+	background-color:#EAEAEA; 
+	transition: display 2s ease; }
+
+input:required:invalid, input:required:invalid:focus { 
+	border:1px solid #FF0000; 
+	background-color:white;} 
+
+input:required:invalid+div, input:required:invalid:focus+div { 
+	display:block; 
+	margin:12px 0px; 
+	padding:24px; 
+	color:#FF0000; }  
+
+input:required:valid, input:required:valid:focus{ 
+	border:1px solid #66cc00;
+	background-color:white;} 
+	
+input:required:valid+div, input:required:valid:focus+div{display:none;} 
+
+select {width:90%;padding:1em;color:#999999;border:.1em solid #999999;cursor:pointer;} 
+select:hover {
+	box-shadow:0 0 4px #2e3192;
+	background-color:#d5d6e9; } 
+
+select option {}
+
+button { 
+	padding:1em; 
+	font-size:2em; 
+	color:#999999; 
+	background-color:#CCCCCC; 
+	border:8px solid #333B3E; 
+	border-radius:2px;  
+	cursor:pointer;}
+
+button.btn_green{color:#FFFFFF;border-color:#00CC33;background-color:#009900;}
+button.btn_green:hover{color:#FFFFFF;background-color:#000000;}
+
+button.btn_yellow{color:#FFFFFF;border-color:#FFFF00;background-color:#FFCC00;}
+button.btn_yellow:hover{color:#FFFFFF;background-color:#000000;}
+
+button.btn_red{color:#FFFFFF;border-color:#FF3333;background-color:#FF6666;}
+button.btn_red:hover{color:#FFFFFF;background-color:#000000;}
+
+button.btn_black{color:#FFFFFF;border-color:#666666;background-color:#333333;}
+button.btn_black:hover{color:#FFFFFF;background-color:#000000;}
+
+button.btn_purple{color:#FFFFFF;border-color:#9966cc;background-color:#663399;}
+button.btn_purple:hover{color:#FFFFFF;background-color:#000000;}
+
+label.menu{display:inline;} /* For account and menu fields */
+label.menu:checked{background-color:#ff6600;}
+
+label.home-Login{color:#cc6699;} /* For home page */
+input.home-Login{color:#cc6699;border:0px;}
+
+button.btn_home{color:#FFFFFF;border-color:#FF3333;background-color:#FF6666;}
+button.btn_home:hover{color:#FFFFFF;background-color:#000000;}

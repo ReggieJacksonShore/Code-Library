@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Web Workers</title>
+    <!-- <link href="style.css" rel="stylesheet" type="text/css" /> -->
+    <style>
+
+      #Container {
+        max-width: 100%!important;
+        margin: 0 auto;
+        padding:1em;
+        background-color:Wheat; 
+        font-size: 1em;
+      }
+
+      p { font-size: 1.2em; }
+
+      select { padding:12px; min-width: 400px; max-width: 100%!important; font-size: 1em;}
+      input { padding:12px; min-width: 400px; max-width: 100%; font-size: 1em;}
+
+      button { 
+        padding: 12px 12px!important; 
+        border: 0px solid DarkGrey!important;
+        border-top: 1px solid LightGrey!important;
+        color: #2c3e50!important;
+        background: linear-gradient(to bottom, DarkGrey, LightGrey); 
+        box-shadow: 0 0 6px rgba(0, 0, 0, .75);
+        min-width: 100px;
+        margin-right: 12px;
+      }
+
+      button:hover { 
+        padding: 12px 12px!important; 
+        background: linear-gradient(to bottom, LightGrey, DarkGrey); }
+
+      button:active { border: 0px solid DarkGrey!important; }
+
+      #Pattern {
+        padding: 12px;
+        font-size: 1.2em;
+        color: White;
+        background-color: Tan;
+      }
+
+      .blinking {
+        padding: 12px;
+        font-size: 1.2em;
+        color: White;
+        background-color: Tan;
+        animation: blinkingText 1.5s infinite;
+      }
+
+      @keyframes blinkingText {
+        0% { color: transparent; }
+        49% { color: White; }
+        50% { color: White; }
+        99% { color: White; }
+        100% { color: transparent; }
+      }
+
+    </style>
+  </head>
+  <body>
+    <!--<script src="script.js"></script> -->
+
+    <div id="Container">
+
+      <h1>Web Workers</h1>     
+
+      <p>
+        A web worker is a JavaScript running in the background, without affecting the performance of the page.
+      </p><br />
+      
+      <p>
+        When executing scripts in an HTML page, the page becomes unresponsive until the script is finished.
+      </p>
+      <p>
+        A web worker is a JavaScript that runs in the background, independently of other scripts, without affecting the performance of the page. You can continue to do whatever you want: clicking, selecting things, etc., while the web worker runs in the background.</p><br />
+
+      <p>Count numbers: <output id="result"></output></p>
+      <button onclick="startWorker()">Start Worker</button> 
+      <button onclick="stopWorker()">Stop Worker</button>
+      
+      <p><strong>Note:</strong> Internet Explorer 9 and earlier versions do not support Web Workers.</p>
+    
+    </div>
+
+    <script>
+    var w;
+    
+    function startWorker() {
+      if(typeof(Worker) !== "undefined") {
+        if(typeof(w) == "undefined") {
+          w = new Worker("demo_workers.js");
+        }
+        w.onmessage = function(event) {
+          document.getElementById("result").innerHTML = event.data;
+        };
+      } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+      }
+    }
+    
+    function stopWorker() { 
+      w.terminate();
+      w = undefined;
+    }
+    </script>
+
+  </body>
+</html>
